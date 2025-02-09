@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            #{{ $order->id }}
         </h2>
     </x-slot>
 
@@ -16,7 +16,7 @@
                         order: null,
                     }"
                     x-init="
-                        Echo.private('users.{{ Auth::id() }}')
+                        Echo.private('orders.{{ $order->id }}')
                             .listen('OrderDispatched', (event) => {
                                 order = event.order
                                 dispatched = true
